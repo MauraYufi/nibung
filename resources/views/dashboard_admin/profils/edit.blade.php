@@ -1,7 +1,7 @@
 @extends('dashboard_admin.layouts.app')
   
 @section('contents')
-    <h1 class="mb-0">Edit Product</h1>
+    <h1 class="mb-0">Edit Profil Desa</h1>
     <hr />
     <form action="{{ route('profils.update', 1) }}" method="POST">
         @csrf

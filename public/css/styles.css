@@ -106,6 +106,23 @@ body {
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Set minimum height of the viewport */
+    margin: 0;
+}
+
+.content {
+    flex: 1;
+    /* Take up remaining vertical space */
+    /* ... other styles for your content ... */
+}
+
+.footer {
+    /* ... styles for your footer ... */
+    margin-top: auto;
+    /* Push footer to the bottom */
 }
 
 hr {
@@ -3079,8 +3096,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #ffc800;
-    --bs-btn-border-color: #ffc800;
+    --bs-btn-bg: #F0C376;
+    --bs-btn-border-color: #F0C376;
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #d9aa00;
     --bs-btn-hover-border-color: #cca000;
@@ -3090,8 +3107,8 @@ fieldset:disabled .btn {
     --bs-btn-active-border-color: #bf9600;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #ffc800;
-    --bs-btn-disabled-border-color: #ffc800;
+    --bs-btn-disabled-bg: #F0C376;
+    --bs-btn-disabled-border-color: #F0C376;
 }
 
 .btn-secondary {
@@ -12039,6 +12056,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .footer {
+    margin-top: auto;
     text-align: center;
     font-size: 0.9rem;
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

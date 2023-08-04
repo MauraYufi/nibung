@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function showPage()
     {
         $dataprofil = app(ProfilController::class)->index();
-        $dataumkm = app(UmkmController::class)->showUmkm();
+        $dataumkm = app(UmkmController::class)->showAllUmkm();
 
         return view('dashboard_admin.dashboard', compact('dataprofil', 'dataumkm'));
     }

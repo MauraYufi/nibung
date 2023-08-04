@@ -111,10 +111,36 @@ class UmkmController extends Controller
                         ->with('success','Data UMKM berhasi dihapus');
     }
 
-    public function showUmkm()
+    public function showAllUmkm()
     {
         $totalData = Umkm::count();
         
         return $totalData;
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $name = $request->input('name');
+
+        $query = Umkm::query();
+
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        if ($name) {
+            $query->whereIn('name', [$name]);
+        }
+
+        $umkms = $query->latest()->paginate(5);
+
+        return view('dashboard_admin.umkm.index', compact('umkms'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);;
+    }
+
+    public function reset()
+    {
+        return redirect()->route('umkms.index');
     }
 }

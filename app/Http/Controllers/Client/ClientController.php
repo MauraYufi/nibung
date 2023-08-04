@@ -27,4 +27,34 @@ class ClientController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function getUmkm()
+    {
+        //
+        $umkms = Umkm::latest()->get();
+     
+        return view('client.umkm',compact('umkms'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $query = Umkm::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('sector', 'like', '%' . $search . '%');
+            });
+        }
+
+        $umkms = $query->latest()->get();
+
+        return view('client.umkm', compact('umkms'));
+    }
+
+    public function reset()
+    {
+        return redirect()->route('umkm.get');
+    }
 }

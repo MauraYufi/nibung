@@ -1,16 +1,16 @@
 @foreach ($data as $item)
-<div class="card mb-3" style="width: 18rem;">
+<div class="card mb-3 me-3 shadow" style="width: 25rem; background-color: #FEF3F2;">
     <div class="card-body">
         <h5 class="card-title">{{ $item->name }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ $item->sector }}</h6>
         <p class="card-text">{{ $item->telp }}</p>
         <!-- Tautan untuk Menyalin Nomor Telepon -->
-        <a id="btnCopy" data-clipboard-text="{{ $item->telp }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-            <img src="assets/img/copy.svg" alt="..." style="width: 25px; height: 25px;"/>
+        <a id="btnCopy" data-clipboard-text="{{ $item->telp }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Salin">
+            <img src="/assets/img/copy.svg" alt="..." style="width: 25px; height: 25px;"/>
         </a>
         <!-- Tautan untuk Direct ke WhatsApp -->
-        <a id="btnWhatsApp" href="https://wa.me/{{ $item->telp }}">
-            <img src="assets/img/baseline-whatsapp.svg" alt="..." style="width: 25px; height: 25px;"/>
+        <a id="btnWhatsApp" href="https://wa.me/{{ $item->telp }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Hubungi Whatsapp">
+            <img src="/assets/img/baseline-whatsapp.svg" alt="..." style="width: 25px; height: 25px;"/>
         </a>
     </div>
 </div>
@@ -34,8 +34,3 @@
         window.open(this.href, '_blank');
     });
 </script>
- 
-
-<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-  Tooltip on top
-</button>

@@ -24,13 +24,12 @@ Route::get('/infografis', function () {
 
 Route::controller(ClientController::class)->group(function (){
     Route::get('/', 'showProfil')->name('profil_desa');
-    Route::get('/umkm', 'showUMKM')->name('umkm');
+    Route::get('/umkm', 'getUMKM')->name('umkm.get');
+    Route::get('/umkm/search', 'search')->name('umkm.search');
+    Route::get('/umkm/reset', 'reset')->name('umkm.reset');
 });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('register', 'register')->name('register');
-    Route::post('register', 'registerSave')->name('register.save');
-
     Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
 
@@ -55,6 +54,8 @@ Route::middleware('auth')->group(function () {
         Route::get('edit/{umkm}', 'edit')->name('umkms.edit');
         Route::put('edit/{umkm}','update')->name('umkms.update');
         Route::delete('/{umkm}','destroy')->name('umkms.destroy');
+        Route::get('/search', 'search')->name('umkms.search');
+        Route::get('/reset', 'reset')->name('umkms.reset');
     });
 
     Route::get('/profile', [App\Http\Controllers\DashboardAdmin\AuthController::class, 'profile'])->name('profile');
